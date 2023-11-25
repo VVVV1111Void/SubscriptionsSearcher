@@ -1,0 +1,6 @@
+input/
+input
+*.csv
+subscriptions.db
+failed.txt
+.vscode
