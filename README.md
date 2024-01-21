@@ -1,20 +1,31 @@
 ### Purpose and Scope
-This is a tool to narrow search results within subscriptions, as this option only appears in the searcch tool when youtube feels like it.
-Another alternative tool is PocketTube, which takes too long.
+When searching on youtube for videos, we are not able to search within channels or groups of channels. There are other solutions, such as using extensions (PocketTube). However, I saw that they were quite slow.
 
+The purpose of this tool is to allow users to search for videos only within their subscription list.
 
 ### Usage
-#### List down the youtube channels
-For this one, use Google's takeout option. For further instruction, refer to newpipe's tutorial on how to get a google takeout of youtube subscriptions. The same type of file is used here.
+#### Setup the input data
+Using this tool requires the use of the Takeout option for youtube subscriptions. For further instruction, refer to newpipe's tutorial on how to get a google takeout of youtube subscriptions. The same type of file used to import subscriptions can be used here.
+
+The takeout should be a csv file. It should be placed in the directory and be named "input.csv"
+
 #### Preparation
-Install sqlite, yt-dlp. It is also recommended to use an application to navigate the output.
+Install sqlite and yt-dlp. The output will be an sqlite database.
 
-First, run db.py to initialize the database. This is where the videos will be listed.
-Then, run searcher.py and wait for a while. After it has finished parsing everything, it will place them in the DB.
-Enjoy!
+First, run db.py to initialize the database to create the file.
 
-Note: You will have to reset the DB every time you wish to run this program (Append and update is WIP as the main owner of the repo is busy these days. Help would be nice on making things easier.)
+```
+python3 ./db.py
+```
 
-#### WIP
-Append new videos without duplicating things
-Handle the DB in a better way
+Afterwards, run the searcher.py to perform the scraping.
+
+```
+python3 ./searcher.py
+```
+
+Note: If broken, please delete the cache and db as incremental updates are still WIP.
+
+
+### WIP
+auto-open takeout in the browser and allow users to point to the file
